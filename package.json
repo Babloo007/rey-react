@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "this is rey react by sai venkat",
   "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html",
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html",
     "test": "jest"
   },
   "repository": {
@@ -24,13 +24,16 @@
   "homepage": "https://github.com/Babloo007/rey-react#readme",
   "devDependencies": {
     "parcel": "^2.12.0",
-    "process": "^0.11.10"
+    "process": "^0.11.10",
+    "tailwindcss": "^3.4.1"
   },
   "dependencies": {
+    "autoprefixer": "^10.4.18",
+    "postcss-cli": "^11.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
-  "browserlist": [
+  "browserslist": [
     "last 2 versions"
   ]
 }
