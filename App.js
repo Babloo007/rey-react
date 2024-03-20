@@ -1,3 +1,6 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+
 // const head = document.createElement("h1");
 // head.innerHTML = "Rey React from js";
 
@@ -6,7 +9,7 @@
 
 const parent = React.createElement("div", { id: "parent" },
     [React.createElement("div", { id: "child" }, [
-        React.createElement("h1", {}, "h1 tag in child"),
+        React.createElement("h1", {}, "This is babloo from rey-react"),
         React.createElement("h2", {}, "h2 tag in child")
     ]),
     React.createElement("div", { id: "child2" }, [

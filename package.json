@@ -1,0 +1,36 @@
+{
+  "name": "rey-react",
+  "version": "1.0.0",
+  "description": "this is rey react by sai venkat",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Babloo007/rey-react.git"
+  },
+  "keywords": [
+    "react",
+    "rey-react",
+    "saivenkat"
+  ],
+  "author": "sai venkat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Babloo007/rey-react/issues"
+  },
+  "homepage": "https://github.com/Babloo007/rey-react#readme",
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "browserlist": [
+    "last 2 versions"
+  ]
+}
