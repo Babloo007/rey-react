@@ -4,12 +4,17 @@ import '../index.css';
 import Header from './components/Header';
 import Body from './components/Body';
 import Footer from './components/Footer';
+import OnMind from './components/OnMind';
 
 function App() {
     return (
         <div className='p-2 flex flex-col min-h-screen'>
             <Header />
-            <Body />
+            <div className='mx-28'>
+                <OnMind />
+                <hr />
+                <Body />
+            </div>
             <Footer />
         </div>
     )
