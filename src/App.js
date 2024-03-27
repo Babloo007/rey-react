@@ -11,7 +11,7 @@ function App() {
         <div className='p-2 flex flex-col min-h-screen'>
             <Header />
             <div className='mx-28'>
-                <OnMind />
+                {/* <OnMind /> */}
                 <hr />
                 <Body />
             </div>
