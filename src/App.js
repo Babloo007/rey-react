@@ -13,7 +13,7 @@ function App() {
             <div className='mx-28'>
                 {/* <OnMind /> */}
                 <hr />
-                <Body />
+                <Body className='mb-4 ' />
             </div>
             <Footer />
         </div>

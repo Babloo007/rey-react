@@ -1,42 +1,58 @@
 import { useEffect, useState } from 'react';
 import RestroCard from './RestroCard';
-import restaurants from '../utils/demoData';
+import Shimmer from './Shimmer';
 
 const Body = () => {
 
-    let [list, setList] = useState(restaurants);
+    const [restList, setRestList] = useState([]);
+    const [filteredRestList, setFilteredRestList] = useState([]);
+
+    const [searchText, setSearchText] = useState('');
 
     const fetchData = async () => {
         const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.0826802&lng=80.2707184&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
         const json = await data.json();
-
-        console.log(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
-        setList(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
+        setRestList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilteredRestList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     }
 
     useEffect(() => {
         fetchData();
     }, [])
 
-    return (
-        <>
-            <div className='p-2 pr-8 grid justify-items-end'>
+    return restList.length === 0 ?
+        <Shimmer />
+        :
+        (<>
+            <div className='p-2 pr-8 flex flex-row justify-between'>
+                <div className='flex flex-row gap-2'>
+                    <input type='text' className='border-orange-400' value={searchText} onChange={(e) => {
+                        setSearchText(e.target.value);
+                    }}></input>
+                    <button className='p-2 bg-orange-600 rounded text-white'
+                        onClick={() => {
+                            const searchOutputList = restList.filter((res) =>
+                                res.info.name.toLowerCase().includes(searchText.toLowerCase())
+                            );
+                            setFilteredRestList(searchOutputList);
+                        }}
+                    >Search</button>
+                </div>
                 <button className='cursor-pointer border p-2 rounded-lg'
                     onClick={() => {
-                        const filteredList = list.filter(
+                        const filteredList = restList.filter(
                             (res) => res.info.avgRating > 4
                         )
-                        setList(filteredList);
+                        setFilteredRestList(filteredList);
                     }}>Top Rated Restaurents</button>
             </div>
             <div className='flex flex-wrap gap-8'>
                 {
-                    list.map((res) => (
-                        <RestroCard key={res.info.cloudinaryImageId} resData={res.info} />
+                    filteredRestList.map((res) => (
+                        <RestroCard key={res.info.id} resData={res.info} />
                     ))
                 }
             </div>
-        </>
-    )
+        </>)
 }
 export default Body;

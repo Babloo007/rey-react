@@ -2,8 +2,9 @@ import StarIcon from "./StarIcon";
 import { CDN_URL } from '../utils/constants'
 
 function RestroCard({ resData }) {
+
     return (
-        <div className='w-48 hover:border bg-slate-50 rounded-lg cursor-pointer'>
+        <div className='w-48 hover:scale-95 hover:shadow-lg duration-100 bg-slate-50 rounded-lg cursor-pointer'>
             <img className='h-32 w-full rounded-lg mb-2' alt='rest-logo' src={CDN_URL + resData.cloudinaryImageId}></img>
             <h3 className="font-bold">{resData.name}</h3>
             <div className="flex flex-row justify-between font-semibold">
