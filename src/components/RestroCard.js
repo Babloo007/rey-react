@@ -13,7 +13,7 @@ function RestroCard({ resData }) {
                     <StarIcon className="w-6 h-5 text-green-700 pt-1" />
                 </div>
                 <div>
-                    <h4>{resData.sla.deliveryTime + " "}mins</h4>
+                    <h4>{resData.deliveryTime + " "}mins</h4>
                 </div>
             </div>
             <h4 className="font-light">{resData.cuisines.join(", ")}</h4>

@@ -1,24 +1,28 @@
 import { useEffect, useState } from 'react';
 import RestroCard from './RestroCard';
+import { restaurants } from '../utils/data'
 import Shimmer from './Shimmer';
 
 const Body = () => {
 
+    // local state variables - super powerful variables
     const [restList, setRestList] = useState([]);
     const [filteredRestList, setFilteredRestList] = useState([]);
 
     const [searchText, setSearchText] = useState('');
 
-    const fetchData = async () => {
-        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.0826802&lng=80.2707184&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
-        const json = await data.json();
-        setRestList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setFilteredRestList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-    }
+    // whenever the state variables updates, react triggers the reconciliation cycle( re-render the component
+    // console.log("Re-rendering");
+    // console.log(restaurants);
 
     useEffect(() => {
         fetchData();
     }, [])
+
+    const fetchData = () => {
+        setRestList(restaurants);
+        setFilteredRestList(restaurants);
+    }
 
     return restList.length === 0 ?
         <Shimmer />
@@ -49,7 +53,7 @@ const Body = () => {
             <div className='flex flex-wrap gap-8'>
                 {
                     filteredRestList.map((res) => (
-                        <RestroCard key={res.info.id} resData={res.info} />
+                        <RestroCard key={res.id} resData={res} />
                     ))
                 }
             </div>
